@@ -4,19 +4,21 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 
 public class UserTest {
-    String expectedLogin = "testUser";
-    String expectedEmail = "test@test.com";
 
     String login = "testUser";
     String email = "test@test.com";
 
-    @Test
-    @DisplayName("Создание user без параметров")
-    void testUserCreationWithParameters() {
+    @CsvSource(value = {
+            "testUser, test@test.com, testUser, test@test.com",
+            "null, null, null, null"
+    })
+    @ParameterizedTest(name = "Создание user с параметрами логин {2} и email {3}")
+    void testUserCreationWithParameters(String login, String email, String expectedLogin, String expectedEmail) {
         User user = new User(login, email);
 
         Assertions.assertEquals(expectedLogin, user.getLogin());
