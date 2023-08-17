@@ -1,4 +1,4 @@
-git remote add origin https://github.com/AleksandraFirsova/TestingSkyPro.gitpackage com.example.testing;
+package com.example.testing;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
